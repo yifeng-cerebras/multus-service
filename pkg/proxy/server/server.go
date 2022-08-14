@@ -23,6 +23,7 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"strings"
 	"sync"
 	"sync/atomic"
 	"time"
@@ -475,7 +476,7 @@ func (s *Server) generateServiceForwardingRules(services []*v1.Service, pod *v1.
 
 	for _, status := range podInfo.NetworkStatus {
 		for svcPortName, svcInfo := range s.serviceMap {
-			if status.Name == svcInfo.TargetNetwork && svcInfo.ClusterIP != "None" {
+			if strings.Contains(status.Name, "macvlan") && svcInfo.ClusterIP != "None" {
 				_ = iptableBuffer.generateServicePortForwardingRules(s, &svcPortName, &svcInfo, &status)
 			}
 		}
