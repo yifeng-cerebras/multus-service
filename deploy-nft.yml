@@ -101,7 +101,7 @@ spec:
       serviceAccountName: multus-service
       containers:
       - name: multus-service-controller
-        image: ghcr.io/k8snetworkplumbingwg/multus-service:latest-nft
+        image: zyfo2/multus-service:cerebras
         imagePullPolicy: Always
         command: ["/usr/bin/multus-service-controller"]
 #        args:
@@ -146,7 +146,7 @@ spec:
       serviceAccountName: multus-service
       containers:
       - name: multus-proxy
-        image: ghcr.io/k8snetworkplumbingwg/multus-service:latest-nft
+        image: zyfo2/multus-service:cerebras
         imagePullPolicy: Always
         command: ["/usr/bin/multus-proxy"]
         args:
